@@ -1,0 +1,204 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{% static "fyp/style.css" %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hatefull Speech Detection</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar navbar-style">
+      <div class="container">
+        <div class="navbar-header">
+          <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#micon">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+
+          <a href="{% url 'home' %}"><img class="" src="{% static 'fyp/logo.png' %}" alt="" width="170" height="60" ></a>
+        </div>
+        <div class="collapse navbar-collapse" id="micon">
+
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'home'%}"> Home </a></li>
+            <li><a href="{% url 'contact'%}"> Contact </a></li>
+            <li><a href="{% url 'tips' %}"> Tips </a></li>
+
+            <li>{% if user.is_authenticated %}</li>
+
+
+
+            <li><form class="" action="{% url 'logoutuser'%}" method="post"></li>
+            {% csrf_token %}
+
+
+            <li><button type="submit" class="btn btn-link" style="font-size: 20px">Logout</button></li>
+            <li><a  style="border-radius: 50px;border:2px solid Tomato"> {{ user.username }} </a></li>
+            <li></form></li>
+
+            {% else %}
+
+            <li><a href="{% url 'signupuser' %}" style="border-radius: 12px;font-size: 16px;background-color: #4CAF50;color: white"  > SignUp </a></li>
+            {% endif %}
+          </ul>
+        </div>
+
+
+      </div>
+
+    </nav>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-6">
+          {% if error %}
+          <p style="color:Gray;font-size: 20px" class="alert alert-danger center text-center">
+           {{error}}
+          </p>
+          {% endif %}
+          <p class="big-text"> Hateful Speech Detection System</p>
+
+          <div class="spacing-15"></div>
+          <p style="color:Gray;">
+            Welcome to our website, where we provide a state-of-the-art functionality to detect hateful speech in a text. Our team is dedicated to creating a safe and inclusive online environment, where everyone can express themselves without fear of harassment or discrimination.
+            <br/><br/>With the rise of online hate speech, it has become more important than ever to have tools that can identify and neutralize harmful content. Our website is designed to do just that, using advanced algorithms and machine learning techniques to scan texts for language that is derogatory, offensive, or discriminatory. Our goal is to help individuals and organizations take proactive steps towards building a more inclusive and respectful online community. We believe that by working together, we can create a better internet for all.
+          </p>
+          <a href="{% url 'fileupload' %}"><h3 class="heading7 ubuntu text-regular text-center" style="color:DodgerBlue;margin-bottom:10px;text-decoration:underline;">Proceed by uploading a file</h3></a>
+
+        </div>
+        <div class="col-sm-6">
+        <img src="{% static 'fyp/image1.png' %}" alt="my image2" class="img-responsive">
+        </div>
+
+        <div class="col-sm-6">
+            <div class="mb-3">
+              <!-- <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label> -->
+              <div class="field-group input" align="center">
+                <form  action="{% url 'result' %}">
+
+                  <textarea style="width:100%;max-width:400px;height:100px;text-align:center;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;min-height:125px;" class="form-control" placeholder="Paste The Full Text
+
+      Copy &amp; paste the content by clicking 'Show Original' or 'View Source' in your Text." name="input1" id="email_content"></textarea>
+
+                  <br>
+                  <button name="hateful" type="submit" style="background-color: red;color: white;font-size: 16px"class="btn btn-primary center-div">Check Hatefullness</button>
+                  <button name="emotion" type="submit" style="background-color: red;color: white;font-size: 16px"class="btn btn-primary center-div">Check Emotions</button>
+
+
+
+                </form>
+
+
+              </div>
+
+            </div>
+
+      </div>
+
+    </div>
+
+
+   </div>
+  </header>
+
+  <!-- Footer -->
+  <footer class="page-footer font-small special-color-dark pt-4">
+
+    <!-- Footer Elements -->
+
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <br>
+
+
+
+  <!-- footer -->
+  <footer class="mainfooter" role="contentinfo">
+  <div class="footer-middle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <a ><img class="" src="{% static 'fyp/logo2.png' %}" alt="" width="200" height="200" ></a>
+
+
+
+
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h3>Products</h3>
+          <ul class="list-unstyled">
+            <li>Registration</li>
+            <li>Percentage of Hateful Discovery result</li>
+            <li>Faulty Text in Hateful Discovery result</li>
+            <li>Tips to improve Speech Deliverability</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h3>Plans & Pricing</h3>
+          <ul class="list-unstyled">
+            <li>Currently our system is free</li>
+            <li>but in future </li>
+            <li>Account creation </li>
+            <li>may be paid</li>
+
+            <li>
+              <a href="#"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    	<div class="col-md-3">
+        <h4>Follow Us</h4>
+            <ul class="social-network social-circle">
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+              <li><a href="https://www.facebook.com/profile.php?id=61553699047497&mibextid=kFxxJD" target='_blank' class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://www.pinterest.com/hatefulspeechdetector/" target="_blank" class="icoPinterest" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+              <li><a href="https://instagram.com/hatefulspeechdetector?igshid=OGQ5ZDc2ODk2ZA==" target='_blank' class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+
+
+            </ul>
+		</div>
+
+
+    </div>
+	<div class="row">
+		<div class="col-md-12 copy">
+			<p class="text-center">&copy; Copyright 2023 - Hatefull Speech Detection.  All rights reserved.</p>
+		</div>
+	</div>
+
+
+  </div>
+  </div>
+</footer>
+  <!-- footer -->
+</body>
+
+</html>

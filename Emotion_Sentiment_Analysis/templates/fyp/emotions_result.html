@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{% static "fyp/style.css" %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hatefull Speech Detection</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar navbar-style">
+      <div class="container">
+        <div class="navbar-header">
+          <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#micon">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+
+          <a href="{% url 'home' %}"><img class="" src="{% static 'fyp/logo.png' %}" alt="" width="170" height="60" ></a>
+        </div>
+        <div class="collapse navbar-collapse" id="micon">
+
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'home'%}"> Home </a></li>
+            <li><a href="{% url 'contact'%}"> Contact </a></li>
+            <li><a href="{% url 'tips' %}"> Tips </a></li>
+
+            <li>{% if user.is_authenticated %}</li>
+
+
+
+            <li><form class="" action="{% url 'logoutuser'%}" method="post"></li>
+            {% csrf_token %}
+
+
+            <li><button type="submit" class="btn btn-link" style="font-size: 20px">Logout</button></li>
+            <li><a  style="border-radius: 50px;border:2px solid Tomato"> {{ user.username }} </a></li>
+            <li></form></li>
+
+            {% else %}
+
+            <li><a href="{% url 'signupuser' %}" style="border-radius: 12px;font-size: 16px;background-color: #4CAF50;color: white"  > SignUp </a></li>
+            {% endif %}
+          </ul>
+        </div>
+
+
+      </div>
+
+    </nav>
+    <div class="container ">
+      <style>
+        .alert.alert-success {
+          display: inline-block;
+          width: 20%; /* Adjust this value to manage the width of each element */
+          margin-right: 8px; /* Adjust spacing between elements */
+        }
+      </style>
+      <div class="row">
+        <div class="col-sm-11">
+
+          <p class="big-text"> Your Emotion Detection is Ready</p>
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-sm-11">
+          {% if txt  %}     
+
+          <h5 class="alert alert-success "><b>Disappointment: </b>{{ txt.disappointment }}</h5>
+          <h5 class="alert alert-success "><b>Sadness: </b>{{ txt.sadness }}</h5>
+          <h5 class="alert alert-success "><b>Annoyance: </b>{{ txt.annoyance}}</h5>
+          <h5 class="alert alert-success "><b>Neutral: </b>{{ txt.neutral }}</h5>
+          <h5 class="alert alert-success "><b>Disapproval: </b>{{ txt.disapproval }}</h5>
+          <h5 class="alert alert-success "><b>Nervousness: </b>{{ txt.nervousness }}</h5>
+          <h5 class="alert alert-success "><b>Realization: </b>{{ txt.realization }}</h5>
+          <h5 class="alert alert-success "><b>Approval: </b>{{ txt.approval }}</h5>
+          <h5 class="alert alert-success "><b>Joy: </b>{{ txt.joy }}</h5>
+          <h5 class="alert alert-success "><b>Remorse: </b>{{ txt.remorse }}</h5>
+          <h5 class="alert alert-success "><b>Caring: </b>{{ txt.caring }}</h5>
+          <h5 class="alert alert-success "><b>Embarrassment: </b>{{ txt.embarrassment }}</h5>
+          <h5 class="alert alert-success "><b>Anger: </b>{{ txt.anger }}</h5>
+          <h5 class="alert alert-success "><b>Disgust: </b>{{ txt.disgust }}</h5>
+          <h5 class="alert alert-success "><b>Grief: </b>{{ txt.grief }}</h5>
+          <h5 class="alert alert-success "><b>Confusion: </b>{{ txt.confusion }}</h5>
+          <h5 class="alert alert-success "><b>Relief: </b>{{ txt.relief }}</h5>
+          <h5 class="alert alert-success "><b>Desire: </b>{{ txt.desire }}</h5>
+          <h5 class="alert alert-success "><b>Admiration: </b>{{ txt.admiration }}</h5>
+          <h5 class="alert alert-success "><b>Fear: </b>{{ txt.fear }}</h5>
+          <h5 class="alert alert-success "><b>Optimism: </b>{{ txt.optimism }}</h5>
+          <h5 class="alert alert-success "><b>Love: </b>{{ txt.love }}</h5>
+          <h5 class="alert alert-success "><b>Excitement: </b>{{ txt.excitement }}</h5>
+          <h5 class="alert alert-success "><b>Curiosity: </b>{{ txt.curiosity }}</h5>
+          <h5 class="alert alert-success "><b>Amusement: </b>{{ txt.amusement }}</h5>
+          <h5 class="alert alert-success "><b>Surprise: </b>{{ txt.surprise }}</h5>
+          <h5 class="alert alert-success "><b>Gratitude: </b>{{ txt.gratitude }}</h5>
+          <h5 class="alert alert-success "><b>Pride: </b>{{ txt.pride }}</h5>
+    
+          {% endif %}
+          <br>
+          <br>
+          <br>
+
+          <div class="center text-center">
+          <h1><span  class="label label-primary"><b>Check Hateful Percentage Before Sending</b></span></h1>
+
+          </div>
+
+
+          <p style="color:Gray;font-size: 20px">
+            Using our website can help you to create content that is more inclusive and respectful towards all groups, which can help to promote a more diverse and tolerant society.
+            <br/><br/>By using our website to scan your content for hate speech, you can avoid inadvertently using offensive language, which can help to protect your reputation and avoid negative feedback or backlash.
+				  </p>
+          </div>
+          </div>
+          </div>
+
+
+        </div>
+
+
+        <!--
+        <div class="col-sm-6">
+        <img src="{% static 'fyp/result.png' %}" alt="my image2" class="img-responsive">
+        </div>
+        -->
+
+
+
+    </div>
+
+
+   </div>
+  </header>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!-- Footer -->
+  <footer class="page-footer font-small special-color-dark pt-4">
+
+    <!-- Footer Elements -->
+
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <br>
+
+
+
+  <!-- footer -->
+  <footer class="mainfooter" role="contentinfo">
+  <div class="footer-middle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <a ><img class="" src="{% static 'fyp/logo2.png' %}" alt="" width="200" height="200" ></a>
+
+
+
+
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h3>Products</h3>
+          <ul class="list-unstyled">
+            <li>Registration</li>
+            <li>Percentage of Hateful Discovery result</li>
+            <li>Faulty Text in Hateful Discovery result</li>
+            <li>Tips to improve Speech Deliverability</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h3>Plans & Pricing</h3>
+          <ul class="list-unstyled">
+            <li>Currently our system is free</li>
+            <li>but in future </li>
+            <li>Account creation </li>
+            <li>may be paid</li>
+
+            <li>
+              <a href="#"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    	<div class="col-md-3">
+        <h4>Follow Us</h4>
+            <ul class="social-network social-circle">
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+              <li><a href="https://www.facebook.com/profile.php?id=61553699047497&mibextid=kFxxJD" target='_blank' class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://www.pinterest.com/hatefulspeechdetector/" target="_blank" class="icoPinterest" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+              <li><a href="https://instagram.com/hatefulspeechdetector?igshid=OGQ5ZDc2ODk2ZA==" target='_blank' class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+
+
+            </ul>
+		</div>
+
+
+    </div>
+	<div class="row">
+		<div class="col-md-12 copy">
+			<p class="text-center">&copy; Copyright 2023 - Hatefull Speech Detection.  All rights reserved.</p>
+		</div>
+	</div>
+
+
+  </div>
+  </div>
+</footer>
+  <!-- footer -->
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{% static "fyp/style.css" %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hatefull Speech Detection</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar navbar-style">
+      <div class="container">
+        <div class="navbar-header">
+          <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#micon">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+
+          <a href="{% url 'home' %}"><img class="" src="{% static 'fyp/logo.png' %}" alt="" width="170" height="60" ></a>
+        </div>
+        <div class="collapse navbar-collapse" id="micon">
+
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'home'%}"> Home </a></li>
+            <li><a href="{% url 'contact'%}"> Contact </a></li>
+            <li><a href="{% url 'tips' %}"> Tips </a></li>
+
+            <li>{% if user.is_authenticated %}</li>
+
+
+
+            <li><form class="" action="{% url 'logoutuser'%}" method="post"></li>
+            {% csrf_token %}
+
+
+            <li><button type="submit" class="btn btn-link" style="font-size: 20px">Logout</button></li>
+            <li><a  style="border-radius: 50px;border:2px solid Tomato"> {{ user.username }} </a></li>
+            <li></form></li>
+
+            {% else %}
+
+            <li><a href="{% url 'signupuser' %}" style="border-radius: 12px;font-size: 16px;background-color: #4CAF50;color: white"  > SignUp </a></li>
+            {% endif %}
+          </ul>
+        </div>
+
+
+      </div>
+
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+
+          <p class="big-text"> Upload your file for free Hatefull Speech Detection</p>
+          <div class="spacing-15"></div>
+          <p style="color:Gray;font-size: 20px">
+					<b>You can upload your file from the device to dicover that your text is Hatefull or not.</b>
+				  </p>
+          <p style="color:Gray;font-size: 20px" class="alert alert-warning">
+					 Note:File with only (.txt) format is allowed
+				  </p>
+          {% if error %}
+          <p style="color:Gray;font-size: 20px" class="alert alert-danger">
+					 {{error}}
+				  </p>
+          {% endif %}
+          <form enctype="multipart/form-data"  method="post" action="{% url 'result' %}">
+              {% csrf_token %}
+
+              <input type="file"  name="input2" style="padding: 8px 12px;font-size: 16px;color: gray  "/>
+              <br>
+
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+              </head>
+
+              <button name="hateful" type="submit" style="background-color: red;color: white;font-size: 16px"class="btn btn-primary center-div">Check Hatefullness</button>
+              <button name="emotion" type="submit" style="background-color: red;color: white;font-size: 16px"class="btn btn-primary center-div">Check Emotions</button>
+
+          </form>
+          <div class="center text-center">
+            <br>
+            <br>
+            <div class="center text-center">
+            <h1><span class="label label-primary"><b>Email Deliverability Testing</b></span></h1>
+
+            </div>
+
+
+            <p style="color:Gray;font-size: 20px">
+  					 Perform a email deliverability test by uploading your file into the <b>Hatefull Speech Detection</b> tool above. Since <b>Hatefull Speech Detection</b> can identify issues that impact your sending reputation including hatefull keywords.It will highlight <b>Faulty Text</b> that can be used improve reputation. This step is crucial to maximize any company's or individual email quality process.
+  				  </p>
+          </div>
+
+        </div>
+        <div class="col-sm-6">
+        <img src="{% static 'fyp/file.png' %}" alt="my image2" class="img-responsive">
+        </div>
+
+
+
+    </div>
+
+
+   </div>
+  </header>
+
+  <!-- Footer -->
+  <footer class="page-footer font-small special-color-dark pt-4">
+
+    <!-- Footer Elements -->
+
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <br>
+
+  <!-- footer -->
+  <footer class="mainfooter" role="contentinfo">
+  <div class="footer-middle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <a ><img class="" src="{% static 'fyp/logo2.png' %}" alt="" width="200" height="200" ></a>
+
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h3>Products</h3>
+          <ul class="list-unstyled">
+            <li>Registration</li>
+            <li>Percentage of Hatefull Speech Detection result</li>
+            <li>Faulty Text in Hatefull Speech Detection result</li>
+            <li>Tips to improve Email Deliverability</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h3>Plans & Pricing</h3>
+          <ul class="list-unstyled">
+            <li>Currently our system is free</li>
+            <li>but in future </li>
+            <li>Account creation </li>
+            <li>may be paid</li>
+
+            <li>
+              <a href="#"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <h4>Follow Us</h4>
+            <ul class="social-network social-circle">
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+              <li><a href="https://www.facebook.com/profile.php?id=61553699047497&mibextid=kFxxJD" target='_blank' class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://www.pinterest.com/hatefulspeechdetector/" target="_blank" class="icoPinterest" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+              <li><a href="https://instagram.com/hatefulspeechdetector?igshid=OGQ5ZDc2ODk2ZA==" target='_blank' class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+
+
+            </ul>
+    </div>
+
+
+    </div>
+  <div class="row">
+    <div class="col-md-12 copy">
+      <p class="text-center">&copy; Copyright 2023 - Hatefull Speech Detection.  All rights reserved.</p>
+    </div>
+  </div>
+
+
+  </div>
+  </div>
+  </footer>
+  <!-- footer -->
+  </body>
+
+  </html>

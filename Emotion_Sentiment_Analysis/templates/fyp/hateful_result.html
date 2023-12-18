@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{% static "fyp/style.css" %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hatefull Speech Detection</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar navbar-style">
+      <div class="container">
+        <div class="navbar-header">
+          <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#micon">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+
+          <a href="{% url 'home' %}"><img class="" src="{% static 'fyp/logo.png' %}" alt="" width="170" height="60" ></a>
+        </div>
+        <div class="collapse navbar-collapse" id="micon">
+
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'home'%}"> Home </a></li>
+            <li><a href="{% url 'contact'%}"> Contact </a></li>
+            <li><a href="{% url 'tips' %}"> Tips </a></li>
+
+            <li>{% if user.is_authenticated %}</li>
+
+
+
+            <li><form class="" action="{% url 'logoutuser'%}" method="post"></li>
+            {% csrf_token %}
+
+
+            <li><button type="submit" class="btn btn-link" style="font-size: 20px">Logout</button></li>
+            <li><a  style="border-radius: 50px;border:2px solid Tomato"> {{ user.username }} </a></li>
+            <li></form></li>
+
+            {% else %}
+
+            <li><a href="{% url 'signupuser' %}" style="border-radius: 12px;font-size: 16px;background-color: #4CAF50;color: white"  > SignUp </a></li>
+            {% endif %}
+          </ul>
+        </div>
+
+
+      </div>
+
+    </nav>
+    <div class="container ">
+      <div class="row">
+        <div class="col-sm-6">
+          <br>
+          <br>
+          <br>
+          <br>
+          <p class="big-text"> Your Hateful Speech Detection is Ready</p>
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-sm-6">
+          {% if txt  %}
+
+          <h5 class="alert alert-success "><b>Toxic : </b>{{ txt.toxic }}</h5>
+          <h5 class="alert alert-success "><b>Servere Toxic : </b>{{ txt.severe_toxic }}</h5>
+          <h5 class="alert alert-success "><b>Obscene: </b>{{ txt.obscene}}</h5>
+          <h5 class="alert alert-success "><b>Threat: </b>{{ txt.threat }}</h5>
+          <h5 class="alert alert-success "><b>Insult: </b>{{ txt.insult }}</h5>
+          <h5 class="alert alert-success "><b>Identity Hate: </b>{{ txt.identity_hate }}</h5>
+    
+          {% endif %}
+          <br>
+          <br>
+          <br>
+
+          <div class="center text-center">
+          <h1><span  class="label label-primary"><b>Check Hateful Percentage Before Sending</b></span></h1>
+
+          </div>
+
+
+          <p style="color:Gray;font-size: 20px">
+            Using our website can help you to create content that is more inclusive and respectful towards all groups, which can help to promote a more diverse and tolerant society.
+            <br/><br/>By using our website to scan your content for hate speech, you can avoid inadvertently using offensive language, which can help to protect your reputation and avoid negative feedback or backlash.
+				  </p>
+          </div>
+          </div>
+          </div>
+
+
+        </div>
+        <div class="col-sm-6">
+        <img src="{% static 'fyp/result.png' %}" alt="my image2" class="img-responsive">
+        </div>
+
+    </div>
+
+
+   </div>
+  </header>
+  <!-- Footer -->
+  <footer class="page-footer font-small special-color-dark pt-4">
+
+    <!-- Footer Elements -->
+
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <br>
+
+
+
+  <!-- footer -->
+  <footer class="mainfooter" role="contentinfo">
+  <div class="footer-middle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <a ><img class="" src="{% static 'fyp/logo2.png' %}" alt="" width="200" height="200" ></a>
+
+
+
+
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h3>Products</h3>
+          <ul class="list-unstyled">
+            <li>Registration</li>
+            <li>Percentage of Hateful Discovery result</li>
+            <li>Faulty Text in Hateful Discovery result</li>
+            <li>Tips to improve Speech Deliverability</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h3>Plans & Pricing</h3>
+          <ul class="list-unstyled">
+            <li>Currently our system is free</li>
+            <li>but in future </li>
+            <li>Account creation </li>
+            <li>may be paid</li>
+
+            <li>
+              <a href="#"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    	<div class="col-md-3">
+        <h4>Follow Us</h4>
+            <ul class="social-network social-circle">
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+              <li><a href="https://www.facebook.com/profile.php?id=61553699047497&mibextid=kFxxJD" target='_blank' class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://www.pinterest.com/hatefulspeechdetector/" target="_blank" class="icoPinterest" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+              <li><a href="https://instagram.com/hatefulspeechdetector?igshid=OGQ5ZDc2ODk2ZA==" target='_blank' class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+
+
+            </ul>
+		</div>
+
+
+    </div>
+	<div class="row">
+		<div class="col-md-12 copy">
+			<p class="text-center">&copy; Copyright 2023 - Hatefull Speech Detection.  All rights reserved.</p>
+		</div>
+	</div>
+
+
+  </div>
+  </div>
+</footer>
+  <!-- footer -->
+</body>
+
+</html>
